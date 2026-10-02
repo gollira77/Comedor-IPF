@@ -51,6 +51,23 @@ export default function DetallePlato() {
         {/* Titulo dinamico del header */}
         <Stack.Screen options={{ title: plato.nombre }} />
 
+        <Pressable
+            onPress={() => {
+            if (router.canGoBack()) {
+                router.back();
+            } else {
+                router.replace("/menu");
+            }
+            }}
+            style={({ pressed }) => ({
+            ...estilos.volver,
+            opacity: pressed ? 0.6 : 1,
+            })}
+        >
+            <Ionicons name="arrow-back" size={20} color="#2563eb" />
+            <Text style={estilos.volverTexto}>Volver</Text>
+        </Pressable>
+
         <View style={estilos.cabecera}>
             <Text style={estilos.categoria}>{plato.categoria.toUpperCase()}</Text>
             <Text style={estilos.nombre}>{plato.nombre}</Text>
@@ -160,5 +177,18 @@ const estilos = StyleSheet.create({
         textAlign: "center",
         color: "#dc2626",
         fontSize: 16,
+    },
+    volver: {
+        flexDirection: "row",
+        alignItems: "center",
+        gap: 6,
+        marginBottom: 16,
+        paddingVertical: 6,
+        alignSelf: "flex-start",
+    },
+    volverTexto: {
+        fontSize: 15,
+        color: "#2563eb",
+        fontWeight: "600",
     },
 });

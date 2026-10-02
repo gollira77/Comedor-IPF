@@ -12,5 +12,5 @@ export default function MenuLayout() {
         <Stack.Screen name="index" options={{ title: "Menú" }} />
         <Stack.Screen name="[id]" options={{ title: "Detalle" }} />
         </Stack>
-  );
+    );
 }

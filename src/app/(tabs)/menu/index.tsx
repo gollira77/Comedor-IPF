@@ -1,11 +1,12 @@
-import { View, Text, FlatList, StyleSheet, SectionList } from "react-native";
+import { View, Text, Pressable, StyleSheet, SectionList } from "react-native";
 import { Link } from "expo-router";
+import { Ionicons } from "@expo/vector-icons";
 
 import { CATEGORIAS, platosPorCategoria, type Plato } from "../../../data/platos";
 import TarjetaPlato from "../../../components/TarjetaPlato";
 
 export default function MenuIndex() {
-  // Armamos las secciones del SectionList: una por categoría.
+    // Armamos las secciones del SectionList: una por categoría.
     const secciones = CATEGORIAS.map((cat) => ({
         titulo: cat,
         data: platosPorCategoria(cat),
@@ -18,9 +19,18 @@ export default function MenuIndex() {
         sections={secciones}
         keyExtractor={(item: Plato) => String(item.id)}
         renderSectionHeader={({ section: { titulo } }) => (
-            <View style={estilos.cabeceraSeccion}>
-            <Text style={estilos.tituloSeccion}>{titulo.toUpperCase()}</Text>
-            </View>
+            <Link
+            href={{
+                pathname: "/categorias/[categoria]",
+                params: { categoria: titulo },
+            }}
+            asChild
+            >
+            <Pressable style={estilos.cabeceraSeccion}>
+                <Text style={estilos.tituloSeccion}>{titulo.toUpperCase()}</Text>
+                <Ionicons name="arrow-forward" size={14} color="#6b7280" />
+            </Pressable>
+            </Link>
         )}
         renderItem={({ item }) => (
             <Link

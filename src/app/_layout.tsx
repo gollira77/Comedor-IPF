@@ -14,7 +14,7 @@ function NavegacionRaiz() {
   return (
     <Stack
       screenOptions={{
-        headerBackButtonDisplayMode: "minimal",
+        headerBackButtonDisplayMode: "generic",
       }}
     >
 
