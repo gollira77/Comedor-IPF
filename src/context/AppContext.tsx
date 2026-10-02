@@ -9,7 +9,6 @@ import { Plato } from "../data/platos";
 import { Pila } from "../estructuras/Pila";
 import { Cola } from "../estructuras/Cola";
 
-
 export interface Pedido {
     numero: number;
     items: Plato[];
