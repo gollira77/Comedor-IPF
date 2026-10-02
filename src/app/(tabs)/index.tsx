@@ -11,9 +11,6 @@ export default function Inicio() {
     <ScrollView style={estilos.contenedor} contentContainerStyle={estilos.contenido}>
       <View style={estilos.cabecera}>
         <Text style={estilos.titulo}>Comedor IPF</Text>
-        <Text style={estilos.subtitulo}>
-          Hola{usuario ? `, ${usuario}` : ""} 👋
-        </Text>
         {cantidadEnEspera > 0 && (
           <Text style={estilos.cola}>
             {cantidadEnEspera} pedido(s) en cola
